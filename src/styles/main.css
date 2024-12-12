@@ -1,0 +1,96 @@
+body {
+    display: flex;
+    justify-content: center; /* centraliza verticalmente */
+    align-items: center; /* centraliza horizontalmente */
+    min-height: 100vh;
+    background-color: #fc1e8a;
+    user-select: none; /* não deixa o usuário slecionar o texto/imagem/card */
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* distância entre os elementos */
+    
+    /* css gradient generator  */
+    background: linear-gradient(
+        325deg, 
+        #03001e 0%,
+        #7303c0 30%,
+        #ec38bc 70%,
+        #fdeff9 100%
+    );
+
+    padding: 40px 60px; /* 40px cima/baixo e 60px esq/dir */ 
+}
+
+h2 {
+    font-size: 3em;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.reset {
+    padding: 15px;
+    width: 100%;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase; /* garante letra maiúscula independente do texto*/
+    cursor: pointer;
+
+}
+
+.reset:focus {
+    color:#ec38bc;
+}
+
+.game {
+    width: 440px;
+    height: 440px;
+    display: flex;
+    flex-wrap: wrap; /* toda vez que um elemento ultrapassar o final da linha ele quebra e vai para a próxima linha*/
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    padding: 2px 3px; /* 3px cima/baixo e 3px esq/dir */ 
+}
+
+/* classe para representar os cards  */
+.item {
+    position: relative;
+    width: 99px;
+    height: 99px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+   
+    font-size: 3em;
+    transform:rotateY(180deg);
+    transition: 0.25s;
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    inset: 0;color:#ec38bc;
+    background: #6d0050;
+    /* opacity: 0.85; */
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
+.item.boxOpen::after,
+.item.boxMatch::after {
+    transform: rotateY(180deg);
+}
